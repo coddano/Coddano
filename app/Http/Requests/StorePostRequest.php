@@ -31,7 +31,7 @@ class StorePostRequest extends FormRequest
 
             'content' => 'required',
 
-            'image' => 'image|required'
+            'image' => 'required|image'
             
         ];
     }

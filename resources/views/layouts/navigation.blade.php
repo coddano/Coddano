@@ -23,6 +23,10 @@
                         {{ __('Créer un post') }}
                     </x-nav-link>
 
+                    <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.create')">
+                        {{ __('Blog') }}
+                    </x-nav-link>
+
                     @endauth
                 </div>
             </div>

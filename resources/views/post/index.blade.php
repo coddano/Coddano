@@ -34,15 +34,15 @@
                                 </a>
                             </div>
                             <div class="mt-2">
-                                <a href="#" class="text-2xl font-bold text-gray-700 hover:underline">Build
+                                <a href="#" class="text-2xl font-bold text-gray-700 hover:underline">
                                     {{$post->title}}
                                 </a>
                                 <p class="mt-2 text-gray-600">
                                     {{Str::limit($post->content, 120)}}
                                 </p>
                             </div>
-                            <div class="flex items-center justify-between mt-4"><a href="#"
-                                    class="text-blue-500 hover:underline">Read more</a>
+                            <div class="flex items-center justify-between mt-4"><a href="{{route('posts.show', $post)}}"
+                                    class="text-blue-500 hover:underline">Voir plus</a>
                                 <div><a href="#" class="flex items-center"><img
                                             src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=731&amp;q=80"
                                             alt="avatar"
