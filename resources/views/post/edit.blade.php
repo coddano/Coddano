@@ -13,26 +13,13 @@
 
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" class="mt-10">
 
-        <form action="{{route('posts.update')}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('posts.update', $post)}}" method="post" enctype="multipart/form-data">
 
             @method('put')
 
             @csrf
 
             <div class="space-y-4">
-
-                <div>
-                    <label for="category" class="text-lx font-serif">Catégories</label>
-                    <select name="category" id="category">
-                        @foreach ($categories as $category)
-
-                        <option value="{{$category->id}}" {{$post->category_id===$category->id ? 'selected' : ''}}>
-                            {{$category->name}}
-                        </option>
-
-                        @endforeach
-                    </select>
-                </div>
 
 
                 <div>
@@ -51,8 +38,20 @@
                     <input type="file" class="form-control" id="image" placeholder="image" name="image">
                 </div>
 
+                <div>
+                    <label for="category" class="text-lx font-serif">Catégories</label>
+                    <select name="category" id="category">
+                        @foreach ($categories as $category)
+
+                        <option value="{{$category->id}}" {{$post->category_id===$category->id ? 'selected' : ''}}>
+                            {{$category->name}}
+                        </option>
+
+                        @endforeach
+                    </select>
+                </div>
                 <div class="mb-6 pt-4">
-                    <button type="submit" class=" px-6 py-2 mx-auto block rounded-md text-lg font-semibold text-indigo-100 bg-indigo-600">Modifiers mon post</button>
+                    <button type="submit" class=" px-6 py-2 mx-auto block rounded-md text-lg font-semibold text-indigo-100 bg-indigo-600">Modifier mon post</button>
                 </div>
 
 

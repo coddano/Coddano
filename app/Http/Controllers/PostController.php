@@ -86,14 +86,24 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePostRequest $request, Post $post)
+    public function update(StorePostRequest $request, Post $post)
     {
-        $imageName = $request->image->store('posts');
-        $post->update([
-            'title'=>$request->title,
-            'content'=>$request->content,
-            'image' =>$imageName
-        ]);
+        $arrayUpdate = [
+            'title' => $request->title,
+            'content' => $request->content
+        ];
+
+        if (request->image != null) {
+            $imageName = $request->image->store('posts');
+
+            $arrayUpdate = array_merge($arrayUpdate,[
+                'image' => $imageName
+            ]);
+        }
+        $post->update($arrayUpdate);
+
+        return redirect()->route('dashboard')->with('success', 'Votre post a été modifié');
+    
     }
 
     /**
@@ -104,6 +114,6 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        
     }
 }

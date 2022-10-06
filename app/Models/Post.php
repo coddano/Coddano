@@ -23,6 +23,9 @@ class Post extends Model
             $post->category()->associate(request()->category);
 
         });
+        self::updating(function ($post){
+            $post->category()->associate(request()->category);
+        });
     }
 
     public function user()

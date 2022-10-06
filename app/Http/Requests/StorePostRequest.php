@@ -24,6 +24,15 @@ class StorePostRequest extends FormRequest
      */
     public function rules()
     {
+        if(request()->routeIs('posts.store'))
+        {
+            $imageRule = 'required|image';
+
+        } elseif (request()->routeIs('posts.edit')){
+
+            $imageRule = 'image|sometimes';
+        }
+
         return [
             'category' => 'required',
             
@@ -31,8 +40,15 @@ class StorePostRequest extends FormRequest
 
             'content' => 'required',
 
-            'image' => 'required|image'
+            'image' => $imageRule
             
         ];
+    }
+
+    protected function prepareForValidation()
+    {
+        if ($this->image ==null) {
+            $this->request->remove('image');
+        }
     }
 }
